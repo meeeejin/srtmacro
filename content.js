@@ -19,11 +19,18 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 		console.log("first:" + firstSelected);
 
 		if (localStorage.getItem('macro') == "true") {
-			$("div.button").append('<a href="#" onclick="macrostop();" style="font-size:15px; margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_stop.png') + '"></a>');
-			
+			$("div.button").append('<a href="#" onclick="macrostop();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_stop.png') + '"></a>');
 		} else {
-			$("div.button").append('<a href="#" onclick="macro();" style="font-size:15px; margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_start.png') + '"></a>');
+			$("div.button").append('<a href="#" onclick="macro();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_start.png') + '"></a>');
 		}
+
+		$("<style>")
+    .prop("type", "text/css")
+    .html("\
+    .search-form form .button input, .search-form form .button a img{\
+    	vertical-align: middle;\
+    }")
+    .appendTo("body");
 
 		// Inserts the macro button into the table.
 		if ($("#search-list").length != 0) {
@@ -34,13 +41,13 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 				var coach = $(columns[6]);
 				if (coach.children().length > 0) {
 					coach.append($("<p class='p5'></p>"));
-					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="coachMacro" value="' + i + '">매크로');
+					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="coachMacro" value="' + i + '"> 매크로');
 					checkbox.children('input').prop('checked', coachSelected.indexOf(i+"") > -1);
 					coach.append(checkbox);
 				}
 				if (first.children().length > 0) {
 					first.append($("<p class='p5'></p>"));
-					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="firstMacro" value="' + i + '">매크로');
+					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="firstMacro" value="' + i + '"> 매크로');
 					checkbox.children('input').prop('checked', firstSelected.indexOf(i+"") > -1);
 					first.append(checkbox);
 				}
