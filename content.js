@@ -11,14 +11,14 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 	$(document).ready(function() {
 		injectJs(chrome.extension.getURL('inject.js'));
 
-		var coachSelected = JSON.parse(localStorage.getItem('coachSelected'));
-		var firstSelected = JSON.parse(localStorage.getItem('firstSelected'));
+		var coachSelected = JSON.parse(sessionStorage.getItem('coachSelected'));
+		var firstSelected = JSON.parse(sessionStorage.getItem('firstSelected'));
 		if (coachSelected == null) coachSelected = [];
 		if (firstSelected == null) firstSelected = [];
 		console.log("coach:" + coachSelected);
 		console.log("first:" + firstSelected);
 
-		if (localStorage.getItem('macro') == "true") {
+		if (sessionStorage.getItem('macro') == "true") {
 			$("div.button").append('<a href="#" onclick="macrostop();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_stop.png') + '"></a>');
 		} else {
 			$("div.button").append('<a href="#" onclick="macro();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_start.png') + '"></a>');
@@ -54,15 +54,15 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 			}
 		}
 
-		if (localStorage.getItem('macro') == "true") {
+		if (sessionStorage.getItem('macro') == "true") {
 			// Restores user preferences
-			$("#psgInfoPerPrnb1").val(localStorage.getItem('psgInfoPerPrnb1'));
-			$("#psgInfoPerPrnb5").val(localStorage.getItem('psgInfoPerPrnb5'));
-			$("#psgInfoPerPrnb4").val(localStorage.getItem('psgInfoPerPrnb4'));
-			$("#psgInfoPerPrnb2").val(localStorage.getItem('psgInfoPerPrnb2'));
-			$("#psgInfoPerPrnb3").val(localStorage.getItem('psgInfoPerPrnb3'));
-			$("#locSeatAttCd1").val(localStorage.getItem('locSeatAttCd1'));
-			$("#rqSeatAttCd1").val(localStorage.getItem('rqSeatAttCd1'));
+			$("#psgInfoPerPrnb1").val(sessionStorage.getItem('psgInfoPerPrnb1'));
+			$("#psgInfoPerPrnb5").val(sessionStorage.getItem('psgInfoPerPrnb5'));
+			$("#psgInfoPerPrnb4").val(sessionStorage.getItem('psgInfoPerPrnb4'));
+			$("#psgInfoPerPrnb2").val(sessionStorage.getItem('psgInfoPerPrnb2'));
+			$("#psgInfoPerPrnb3").val(sessionStorage.getItem('psgInfoPerPrnb3'));
+			$("#locSeatAttCd1").val(sessionStorage.getItem('locSeatAttCd1'));
+			$("#rqSeatAttCd1").val(sessionStorage.getItem('rqSeatAttCd1'));
 
 			if ($("#search-list").length != 0) {
 				var rows = $('#search-list table tr');
@@ -106,16 +106,16 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 				}
 
 				if (succeed == true) {
-					localStorage.removeItem('macro');
-					localStorage.removeItem('coachSelected');
-					localStorage.removeItem('firstSelected');
-					localStorage.removeItem('psgInfoPerPrnb1');
-					localStorage.removeItem('psgInfoPerPrnb5');
-					localStorage.removeItem('psgInfoPerPrnb4');
-					localStorage.removeItem('psgInfoPerPrnb2');
-					localStorage.removeItem('psgInfoPerPrnb3');
-					localStorage.removeItem('locSeatAttCd1');
-					localStorage.removeItem('rqSeatAttCd1');
+					sessionStorage.removeItem('macro');
+					sessionStorage.removeItem('coachSelected');
+					sessionStorage.removeItem('firstSelected');
+					sessionStorage.removeItem('psgInfoPerPrnb1');
+					sessionStorage.removeItem('psgInfoPerPrnb5');
+					sessionStorage.removeItem('psgInfoPerPrnb4');
+					sessionStorage.removeItem('psgInfoPerPrnb2');
+					sessionStorage.removeItem('psgInfoPerPrnb3');
+					sessionStorage.removeItem('locSeatAttCd1');
+					sessionStorage.removeItem('rqSeatAttCd1');
 					chrome.extension.sendMessage({type: 'playSound'}, function(data) { });
 				} else {
 					setTimeout(function() { 
