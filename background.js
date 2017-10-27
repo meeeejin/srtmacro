@@ -14,7 +14,7 @@ function playSound() {
 function sendTelegramMessage() {
 	var botToken = localStorage['botToken'];
 	var chatId = localStorage['chatId'];
-	var msg = encodeURI('Succeeded in booking a train ticket.');
+	var msg = encodeURI('Macro has been stopped. Please check your reservation status.');
 	if (botToken != undefined && chatId != undefined) {
 		var url = 'https://api.telegram.org/bot' + botToken + '/sendmessage?chat_id=' + chatId + '&text=' + msg;
 		
