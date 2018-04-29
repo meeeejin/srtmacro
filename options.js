@@ -5,7 +5,7 @@ function save_options() {
   localStorage['botToken'] = document.getElementById('bot_token').value;
   localStorage['chatId'] = document.getElementById('chat_id').value;  
   
-  var url = 'https://api.telegram.org/bot' + document.getElementById('bot_token').value + '/sendmessage?chat_id=' + document.getElementById('chat_id').value + '&text=' + encodeURI('Bot connected.');
+  var url = 'https://api.telegram.org/bot' + document.getElementById('bot_token').value + '/sendMessage?chat_id=' + document.getElementById('chat_id').value + '&text=' + encodeURI('Bot connected.');
 		
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange=function() {
