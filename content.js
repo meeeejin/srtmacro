@@ -40,8 +40,8 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
     .appendTo("body");
 
 		// Inserts the macro button into the table.
-		if ($("#search-list").length != 0) {
-			var rows = $('#search-list table tr');
+		if ($("#result-form").length != 0) {
+			var rows = $('#result-form table tr');
 			for (i = 1; i < rows.length; i++) {
 				var columns = $(rows[i]).children('td');
 				var first = $(columns[5]);
@@ -71,8 +71,8 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 			$("#locSeatAttCd1").val(sessionStorage.getItem('locSeatAttCd1'));
 			$("#rqSeatAttCd1").val(sessionStorage.getItem('rqSeatAttCd1'));
 
-			if ($("#search-list").length != 0) {
-				var rows = $('#search-list table tr');
+			if ($("#result-form").length != 0) {
+				var rows = $('#result-form table tr');
 
 				var succeed = false;
 				for (i = 1; i < rows.length; i++) {
