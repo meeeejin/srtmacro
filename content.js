@@ -18,11 +18,18 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 		console.log("coach:" + coachSelected);
 		console.log("first:" + firstSelected);
 
+		var searchButtonDiv = $('fieldset').first().find('input').last().parent();
 		if (sessionStorage.getItem('macro') == "true") {
-			$("div.button").append('<a href="#" onclick="macrostop();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_stop.png') + '"></a>');
+			searchButtonDiv.append('<a href="#" onclick="macrostop();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_stop.png') + '"></a>');
 		} else {
-			$("div.button").append('<a href="#" onclick="macro();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_start.png') + '"></a>');
+			searchButtonDiv.append('<a href="#" onclick="macro();" style="margin-left:5px;"><img src="' + chrome.extension.getURL('images/btn_start.png') + '"></a>');
 		}
+
+		searchButtonDiv.css({
+			display: 'flex',
+			'align-items': 'center',
+			'justify-content': 'center'
+		});
 
 		$("<style>")
     .prop("type", "text/css")
@@ -118,7 +125,7 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 					sessionStorage.removeItem('rqSeatAttCd1');
 					chrome.extension.sendMessage({type: 'playSound'}, function(data) { });
 				} else {
-					setTimeout(function() { 
+					setTimeout(function() {
 					location.reload();
 					}, 1000);
 				}
