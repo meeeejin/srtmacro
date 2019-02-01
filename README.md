@@ -2,6 +2,11 @@
 ![srtmacro](http://i.imgur.com/hTgoL8S.png)
 SRT Macro는 매진된 SRT 승차권 예매를 도와주는 크롬 확장 프로그램으로, 기존의 [Korail Macro](https://github.com/kswchoo/korailmacro)를 기반으로 만들어진 프로그램입니다.
 
+- [SRT Macro 크롬 확장프로그램](https://chrome.google.com/webstore/detail/srt-macro/oofechbikbkcmfajkbmmlbhabaanohkg)
+- [SRT Macro 웨일 확장앱](https://store.whale.naver.com/detail/dlcfaklgoocomhegkjadjedjodnjgopc)
+
+> :warning: 몇몇 이슈가 정리되지 않아 현재 release된 버전의 코드가 master branch에는 아직 반영되지 않았습니다. 현재 release된 버전의 [소스 코드](https://github.com/meeeejin/srtmacro/tree/1.0.4)와 [압축 파일](https://github.com/meeeejin/srtmacro/releases)은 1.0.4 branch나 release 탭에서 접근 가능합니다.
+
 ## 사용 방법
 
 1. [SRT Macro 크롬 확장 프로그램](https://chrome.google.com/webstore/detail/srt-macro/oofechbikbkcmfajkbmmlbhabaanohkg)을 설치합니다.
