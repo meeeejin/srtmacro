@@ -1,5 +1,7 @@
 **:no_entry: 2019년 8월 13일 자로 SRT Macro 크롬 확장프로그램 및 웨일 확장앱 게시를 중단했습니다. SR 측의 요청에 따라, 승차권 예발매 서비스 장애 및 악용 사례 (부정 판매, 알선 행위 및 양도양수 판매)를 방지하기 위해 게시된 프로그램을 삭제했습니다. 사용자 분들도 [경찰청 보도자료](https://www.police.go.kr/portal/bbs/view.do?nttId=21859&bbsId=B0000011&searchCnd=1&searchWrd=%EB%A7%A4%ED%81%AC%EB%A1%9C&section=&sdate=&edate=&useAt=&replyAt=&menuNo=200488&viewType=&delCode=0&option1=&option2=&option4=&option5=&deptId=&larCdOld=&midCdOld=&smCdOld=&orderType=&pageUnit=10&pageIndex=1)를 참고하시고, 관련하여 피해를 입는 일이 없으시도록 각별히 주의하여 주시기 바랍니다. 그동안 SRT Macro 확장 프로그램을 사용해주셔서 감사합니다.**
 
+---
+
 # SRT Macro
 ![srtmacro](http://i.imgur.com/hTgoL8S.png)
 SRT Macro는 매진된 SRT 승차권 예매를 도와주는 크롬 확장 프로그램으로, 기존의 [Korail Macro](https://github.com/kswchoo/korailmacro)를 기반으로 만들어진 프로그램입니다.
