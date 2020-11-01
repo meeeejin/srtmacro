@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "SRT Macro",
   "description": "SRT 자동 예약 매크로",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "permissions": [
     "https://etk.srail.kr/"
   ],
