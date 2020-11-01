@@ -1,4 +1,4 @@
-var dsturl1 = "https://etk.srail.co.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000";
+var dsturl1 = 'https://etk.srail.kr/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000'
 
 window.showModalDialog = window.showModalDialog || function(url, arg, opt) {
 	window.open(url, arg, opt);
