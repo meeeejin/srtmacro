@@ -11,7 +11,7 @@ SRT Macro는 매진된 SRT 승차권 예매를 도와주는 크롬 확장 프로
 - [SRT Macro 웨일 확장앱](https://store.whale.naver.com/detail/dlcfaklgoocomhegkjadjedjodnjgopc)
     - [2019.08.13. Screenshot](images/whale-screenshot.png)
 
-> :warning: 몇몇 이슈가 정리되지 않아 현재 release된 버전의 코드가 master branch에는 아직 반영되지 않았습니다. 현재 release된 버전의 소스 코드와 압축 파일은 [1.0.4 branch](https://github.com/meeeejin/srtmacro/tree/1.0.4) 나 [release](https://github.com/meeeejin/srtmacro/releases) 탭에서 접근 가능합니다.
+> :warning: 몇몇 이슈가 정리되지 않아 현재 release된 버전의 코드가 master branch에는 아직 반영되지 않았습니다. 현재 release된 버전의 소스 코드와 압축 파일은 [develop branch](https://github.com/meeeejin/srtmacro/tree/develop) 나 [release](https://github.com/meeeejin/srtmacro/releases) 탭에서 접근 가능합니다.
 
 ## 사용 방법
 
