@@ -11,8 +11,11 @@ function macrostart() {
 	firstSelected = [].map.call(document.querySelectorAll('.firstMacro:checked'), function (select) {
 		return select.value;
 	});
+	waitingSelected = [].map.call(document.querySelectorAll('.waitingMacro:checked'), function (select) {
+		return select.value;
+	});
 
-	if (coachSelected.length == 0 && firstSelected.length == 0) {
+	if (coachSelected.length == 0 && firstSelected.length == 0 && waitingSelected.length == 0) {
 		alert("매크로를 실행하기 위해서는 예매하기 위한 열차 1개 이상을 선택하십시오.");
 	} else {
 		alert("매크로를 시작합니다.\n트럼펫 소리가 나면 바로 결제를 해주셔야 합니다.");
@@ -20,6 +23,7 @@ function macrostart() {
 		sessionStorage.setItem('macro', true);
 		sessionStorage.setItem('coachSelected', JSON.stringify(coachSelected));
 		sessionStorage.setItem('firstSelected', JSON.stringify(firstSelected));
+		sessionStorage.setItem('waitingSelected', JSON.stringify(waitingSelected));
 
 		// Stores user preferences.
 		sessionStorage.setItem('psgInfoPerPrnb1', document.getElementsByName('psgInfoPerPrnb1')[0].value);
@@ -40,6 +44,7 @@ function macrostop() {
 	sessionStorage.removeItem('macro');
 	sessionStorage.removeItem('coachSelected');
 	sessionStorage.removeItem('firstSelected');
+	sessionStorage.removeItem('waitingSelected');
 	sessionStorage.removeItem('psgInfoPerPrnb1');
 	sessionStorage.removeItem('psgInfoPerPrnb5');
 	sessionStorage.removeItem('psgInfoPerPrnb4');
@@ -57,8 +62,11 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 
 		var coachSelected = JSON.parse(sessionStorage.getItem('coachSelected'));
 		var firstSelected = JSON.parse(sessionStorage.getItem('firstSelected'));
+		var waitingSelected = JSON.parse(sessionStorage.getItem('waitingSelected'));
+
 		if (coachSelected == null) coachSelected = [];
 		if (firstSelected == null) firstSelected = [];
+		if (waitingSelected == null) waitingSelected = [];
 
 		if (sessionStorage.getItem('macro') == "true") {
 			$("div#search_top_tag.tal_c.mgt30").append('<a href="#" id="btnstop" style="margin-left:5px;display:inline-block;height:100%;vertical-align:middle;"><img src="' + chrome.runtime.getURL('images/btn_stop.png') + '"></a>');			
@@ -91,6 +99,7 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 				var columns = $(rows[i]).children('td');
 				var first = $(columns[5]);
 				var coach = $(columns[6]);
+				var waiting = $(columns[7]);
 				if (coach.children().length > 0) {
 					coach.append($("<p class='p5'></p>"));
 					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="coachMacro" value="' + i + '"> 매크로');
@@ -102,6 +111,12 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="firstMacro" value="' + i + '"> 매크로');
 					checkbox.children('input').prop('checked', firstSelected.indexOf(i+"") > -1);
 					first.append(checkbox);
+				}
+				if (waiting.children().length > 0) {
+					waiting.append($("<p class='p5'></p>"));
+					var checkbox = $("<label></label>").html('<input type="checkbox" name="checkbox" class="waitingMacro" value="' + i + '"> 매크로');
+					checkbox.children('input').prop('checked', waitingSelected.indexOf(i+"") > -1);
+					waiting.append(checkbox);
 				}
 			}
 		}
@@ -125,6 +140,7 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 
 					var first = $(columns[5]);
 					var coach = $(columns[6]);
+					var waiting = $(columns[7]);
 
 					if (coachSelected.indexOf(i+"") > -1) {
 						var coachSpecials = coach.children("a");
@@ -155,12 +171,28 @@ if (document.URL.substring(0, dsturl1.length) == dsturl1) {
 							if (succeed == true) break;
 						}
 					}
+
+					if (waitingSelected.indexOf(i+"") > -1) {
+						var waitingSpecials = waiting.children("a");
+						if (waitingSpecials.length != 0) {
+							for (j = 0; j < waitingSpecials.length; j++) {
+								name = $(waitingSpecials[j]).attr('class');
+								if (name == 'btn_small btn_burgundy_dark val_m wx90') {
+									$(waitingSpecials[0])[0].click();
+									succeed = true;
+									break;
+								}
+							}
+							if (succeed == true) break;
+						}
+					}
 				}
 
 				if (succeed == true) {
 					sessionStorage.removeItem('macro');
 					sessionStorage.removeItem('coachSelected');
 					sessionStorage.removeItem('firstSelected');
+					sessionStorage.removeItem('waitingSelected');
 					sessionStorage.removeItem('psgInfoPerPrnb1');
 					sessionStorage.removeItem('psgInfoPerPrnb5');
 					sessionStorage.removeItem('psgInfoPerPrnb4');
